@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block details %}
+<div class="details">
+    <div class="container mt-5">
+        <div class="row ms-auto me-auto text-center">
+            {% if users %}
+            <table id=tb1 class="table table-dark table-bordered text-center">
+                <tr>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Account Number</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.name}}</td>
+                    <td>{{user.dob}}</td>
+                    <td>{{user.accountno}}</td>
+                </tr>
+                {% endfor %}
+            </table>   
+            <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+        </div>
+    </div>
+    {% else %}
+    <h3>Bank have 0 customer 😥😔</h3>
+    {% endif %}
+</div>
+{% endblock %}

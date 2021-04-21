@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block create %}
+<div class="container mt-5">
+    <div class="row" id="acccreate">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h1>Create Account</h1>
+            <form class="ms-auto me-auto" method="POST" action="/add"> 
+                <div class="form-group mt-2">
+                  <label for="emailid">Email address</label>
+                  <input type="email" name="email" class="form-control" id="emailid" aria-describedby="emailHelp" placeholder="Enter email" value="{{em}}" required>
+                </div>
+                <div class="form-group mt-2">
+                  <label for="accholdername">Account holder name</label>
+                  <input type="text" name="name" class="form-control" id="accholdername" placeholder="Enter firstname" value="{{nm}}" required>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="date-input">dob</label>
+                    <input class="form-control" name="dob"  type="date"  id="date-input" value="{{dob}}" required>
+                  </div>
+                  <div class="form-group mt-2 ">
+                    <label for="accno-input">Account number</label>
+                    <input class="form-control" name="accno" type="text" id="accno-input" value="{{accno}}" required >
+                  </div>
+                  <div class="form-group mt-2 ">
+                    <label for="amount-input">Amount</label>
+                    <input class="form-control" name="amt" type="number" id="amount-input" value="{{amt}}" required>
+                  </div>
+                  <div class="form-group mt-4 text-center">
+                    <div class="form-row">
+                      <button type="submit" class="btn btn-primary" style="width:fit-content;">Create</button>
+                      <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+                    </div>
+                    
+                  </div>
+              </form>
+              {% if msg %}
+                {% if alert==1 %}
+                  <div class="alert alert-success ms-auto me-auto mt-2" role="alert" >{{ msg }}</div>
+                {% else %}
+                <div class="alert alert-warning ms-auto me-auto mt-2" role="alert">
+                  {{msg}}
+                </div>
+                {% endif %}
+              {% endif %}
+        </div>
+    </div>    
+</div>
+{% endblock %}

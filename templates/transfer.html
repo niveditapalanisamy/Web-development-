@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{%block transfer%}
+<div class="container mt-5">
+    <div class="row">
+        <h1 class="text-center">Transfer Amount</h1>
+        <div class="col-4 mt-5 pt-4 form-group">
+            <label>From Account</label>
+            <input onfocusout="tooptions()" class="form-control" type="text" name="fromaccno" id="fromacc" placeholder="Account no.">
+            <select id="from" class="form-select" aria-label="Default select example" hidden>
+                <option selected>select</option>
+                {%for user in users%}
+                    <option class="fromoptions" value="{{user.accountno}}">{{user.name}} {{user.accountno}}</option>
+                {%endfor%}    
+            </select>
+        </div>
+        <div class="col-4 mt-5 pt-4 form-group">
+            <label>To Account</label>
+            <select id="to" class="form-select" aria-label="Default select example">    
+                <option value="select" selected>select</option>
+            </select>
+        </div>
+        <div class="col-3 mt-5 pt-4 form-group">
+            <label for="">Amount</label>
+            <input class="form-control" type="number" name="amt" id="transferamt">
+        </div>
+    </div>
+    <div class="text-center mt-2">
+        <form action="/transfer" method="POST">
+            <input type="hidden" name="from" id="frmacc">
+            <input type="hidden" name="to" id="toacc">
+            <input type="hidden" name="amtf" id="transfer">
+            <button onclick="fill()" type="submit" class="btn btn-primary">Transfer</button>
+            <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+        </form>
+    </div>
+    {% if msg %}
+        <div class="alert alert-warning ms-auto me-auto mt-2" role="alert">
+            {{msg}}
+        </div>
+    {% endif %}
+</div>
+<script>
+    function fill(){
+        var x=document.getElementById("fromacc").value;
+        document.getElementById("frmacc").value=x;
+
+        var y=document.getElementById("to").value;
+        document.getElementById("toacc").value=y;
+        var z=document.getElementById('transferamt').value;
+        document.getElementById("transfer").value=z;
+    }
+    function tooptions(){
+        var xhttp=new XMLHttpRequest();
+        var i;
+        var text="";
+        var from=document.getElementById("fromacc");
+        xhttp.onreadystatechange= function(){
+            if(this.readyState == 4 && this.status == 200){
+                var fromoptions=document.getElementsByClassName("fromoptions");
+                text+="<option value='select' selected>select</option>";
+                if(from.value!=""){
+                    for(i=0;i<fromoptions.length;i++){
+                        if(fromoptions[i].value!=from.value){
+                            text+="<option value="+fromoptions[i].value+">"+fromoptions[i].innerHTML+"</option>";
+                        }
+                    }
+                }
+                document.getElementById("to").innerHTML=text;
+            }
+        }
+        xhttp.open("GET", "/transfer", true);
+        xhttp.send();
+    }
+</script>
+{%endblock%}

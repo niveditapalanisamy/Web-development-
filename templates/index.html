@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <div class="container-fluid p-3 my-9 bg-dark text-white">
+        <marquee>1.Welcome to our banking service</pre>
+            2.You will be able to veiw all customers</pre>
+            3.You will be made to see the the customer account balance </pre>
+            4.You can make amount transfer from one customer account to another customer account</pre>
+        </marquee>
+    </div>
+</header>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-12">
+            <img src="https://i.ibb.co/sF67xcw/bank2.png" alt="bank img">
+            <h1 class="display-1">TJ Bank</h1>
+            <h6>Bank for money transfer</h6>
+        </div>
+        <div class="col-sm-12"><a href="/all" class="button btn" role="button">VIEW ALL CUSTOMERS</a></div>
+        <div class="col-sm-12 mt-2"><a href="/transfer" class="button btn" role="button">TRANSFER MONEY</a></div>
+        <div class="col-sm-12 mt-2"><a href="/checkbal" class="button btn" role="button">CHECK BALANCE </a></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block check %}
+<div class="container mt-5">
+
+    <form action="/checkbal" method="POST">
+        <div class="row ms-auto me-auto">
+            <div class="col-lg-4 col-sm-4 col-6 text-start">
+                <label>Account no.</label>
+                <input type="text" class="form-control" id="autoSizingInput" name="accno" placeholder="accountno" value="{{accountno}}">
+            </div>
+            <div class="col-lg-4 col-sm-4 col-6 mt-4">
+                <button type="submit" class="btn btn-primary">Check Balance</button>
+            </div>
+        </div>
+        <div class="row ms-auto me-auto">
+            <div class="col-lg-4 col-sm-4 col-6 mt-2" >
+                <label>Balance</label>
+                <input class="form-control" type="text" value="{{bal}}" readonly>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-6 mt-auto">
+                <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+            </div>
+        </div>
+    </form>
+    {% if msg %}
+        <div class="alert alert-warning ms-auto me-auto mt-2" role="alert">
+            {{msg}}
+        </div>
+    {% endif %}  
+</div>
+{% endblock %}
