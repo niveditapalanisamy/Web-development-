@@ -1,6 +1,7 @@
 # Basic Banking System -- TJ Bank #
 THE SPARKS FOUNDATION DOMAIN:*Web Devlopment* \
-FRONT-END TOOLS USED:*HTML,CSS,Flask,Bootstrap* \
+FRONT-END TOOLS USED:*HTML,CSS,Javascript* \
+FRAME WORK USED: *Flask,Bootstrap*\
 BACK-END TOOLS USED:*MYSQL* \
 Flow: *Home Page >Create Account > View all Customers > Transfer Money > Check Balance* 
 
